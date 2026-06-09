@@ -196,4 +196,12 @@ function toggleMob(mob) {
 .expand-hint { text-align: center; font-size: 0.75rem; color: #aaa; margin-top: 0.6rem; }
 
 .empty { text-align: center; margin-top: 3rem; font-size: 1.2rem; color: #aaa; }
+
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 1.6rem; }
+  .search { font-size: 0.95rem; }
+  .type-btn { font-size: 0.8rem; padding: 0.35rem 0.7rem; }
+  .mob-grid { grid-template-columns: 1fr; }
+  .mob-card { padding: 0.85rem; }
+}
 </style>

@@ -250,4 +250,13 @@ function formatViews(n) {
 
 .yt-meta { font-size: 0.72rem; color: #888; margin-top: 0.2rem; }
 .yt-error { font-size: 0.78rem; color: #aaa; margin-top: 0.3rem; }
+
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 1.6rem; }
+  .controls { flex-direction: column; }
+  .search { font-size: 0.95rem; }
+  .stage-grid { grid-template-columns: 1fr; }
+  .stage-card { padding: 0.85rem; }
+  .yt-thumb { width: 80px; height: 45px; }
+}
 </style>

@@ -15,7 +15,8 @@ const menus = [
 
 <template>
   <div class="app-layout">
-    <!-- 사이드바 -->
+
+    <!-- PC 사이드바 -->
     <aside class="sidebar">
       <div class="sidebar-logo">🎮 게임 가이드</div>
       <nav class="sidebar-nav">
@@ -37,6 +38,20 @@ const menus = [
       <Valorant v-if="currentPage === 'valorant'" />
       <Minecraft v-if="currentPage === 'minecraft'" />
     </main>
+
+    <!-- 모바일 하단 탭바 -->
+    <nav class="bottom-nav">
+      <button
+        v-for="menu in menus"
+        :key="menu.key"
+        :class="['bottom-nav-item', { active: currentPage === menu.key }]"
+        @click="currentPage = menu.key"
+      >
+        <span class="bottom-nav-icon">{{ menu.icon }}</span>
+        <span class="bottom-nav-label">{{ menu.label }}</span>
+      </button>
+    </nav>
+
   </div>
 </template>
 
@@ -51,7 +66,7 @@ body { font-family: 'Arial', sans-serif; background: #f4f6f8; }
   min-height: 100vh;
 }
 
-/* 사이드바 */
+/* ───── PC 사이드바 ───── */
 .sidebar {
   width: 200px;
   min-height: 100vh;
@@ -70,7 +85,6 @@ body { font-family: 'Arial', sans-serif; background: #f4f6f8; }
   font-weight: bold;
   color: white;
   border-bottom: 1px solid #2d2d4e;
-  letter-spacing: 0.5px;
 }
 
 .sidebar-nav {
@@ -98,14 +112,77 @@ body { font-family: 'Arial', sans-serif; background: #f4f6f8; }
 }
 .nav-item:hover { background: #2d2d4e; color: white; }
 .nav-item.active { background: #4f46e5; color: white; }
-
 .nav-icon { font-size: 1.2rem; }
 
-/* 메인 콘텐츠 */
+/* ───── 메인 콘텐츠 (PC) ───── */
 .main-content {
   margin-left: 200px;
   flex: 1;
   padding: 2rem 2.5rem;
   max-width: calc(100vw - 200px);
+}
+
+/* ───── 모바일 하단 탭바 ───── */
+.bottom-nav {
+  display: none;
+}
+
+/* ───── 모바일 반응형 ───── */
+@media (max-width: 768px) {
+  /* 사이드바 숨기기 */
+  .sidebar {
+    display: none;
+  }
+
+  /* 메인 콘텐츠 전체 너비 */
+  .main-content {
+    margin-left: 0;
+    max-width: 100vw;
+    padding: 1rem;
+    padding-bottom: 80px; /* 하단 탭바 높이만큼 여백 */
+  }
+
+  /* 하단 탭바 표시 */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #1a1a2e;
+    border-top: 1px solid #2d2d4e;
+    z-index: 100;
+  }
+
+  .bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: none;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0;
+  }
+
+  .bottom-nav-item.active {
+    color: white;
+    background: rgba(79, 70, 229, 0.3);
+  }
+
+  .bottom-nav-icon {
+    font-size: 1.5rem;
+  }
+
+  .bottom-nav-label {
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: inherit;
+  }
 }
 </style>

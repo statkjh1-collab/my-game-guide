@@ -204,4 +204,13 @@ function selectAgent(agent) {
 .expand-hint { text-align: center; font-size: 0.75rem; color: #aaa; margin-top: 0.6rem; }
 
 .empty { text-align: center; margin-top: 3rem; font-size: 1.2rem; color: #aaa; }
+
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 1.6rem; }
+  .search { font-size: 0.95rem; }
+  .role-buttons { gap: 0.3rem; }
+  .role-btn { font-size: 0.78rem; padding: 0.3rem 0.6rem; }
+  .agent-grid { grid-template-columns: 1fr; }
+  .agent-card { padding: 0.85rem; }
+}
 </style>
