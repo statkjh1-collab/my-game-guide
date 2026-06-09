@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import BASE_URL from '../api.js'
 
 const mobs = ref([])
 const search = ref('')
@@ -11,7 +12,7 @@ const typeEmoji = { '평화적': '🐾', '중립적': '😐', '적대적': '⚔�
 const typeColor = { '평화적': '#27ae60', '중립적': '#f39c12', '적대적': '#e74c3c', '보스': '#8e44ad' }
 
 onMounted(async () => {
-  const res = await fetch('http://localhost:8000/mobs')
+  const res = await fetch(`${BASE_URL}/mobs`)
   mobs.value = await res.json()
 })
 

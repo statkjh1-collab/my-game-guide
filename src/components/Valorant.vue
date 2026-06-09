@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import BASE_URL from '../api.js'
 
 const agents = ref([])
 const search = ref('')
@@ -11,7 +12,7 @@ const roleColor = { '타격대': '#e74c3c', '척후대': '#f39c12', '전략가':
 const difficultyColor = { '쉬움': '#27ae60', '보통': '#f39c12', '어려움': '#e74c3c' }
 
 onMounted(async () => {
-  const res = await fetch('http://localhost:8000/agents')
+  const res = await fetch(`${BASE_URL}/agents`)
   agents.value = await res.json()
 })
 

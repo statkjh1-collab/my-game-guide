@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import BASE_URL from '../api.js'
 
 const search = ref('')
 const selectedChapter = ref('전체')
@@ -9,7 +10,7 @@ const youtubeData = ref({})
 const youtubeLoading = ref({})
 
 onMounted(async () => {
-  const res = await fetch('http://localhost:8000/chapters')
+  const res = await fetch(`${BASE_URL}/chapters`)
   chapters.value = await res.json()
   loading.value = false
 })
@@ -41,7 +42,7 @@ async function fetchYoutube(stageName) {
   if (youtubeData.value[stageName]) return
   youtubeLoading.value[stageName] = true
   try {
-    const res = await fetch(`http://localhost:8000/youtube?stage=${encodeURIComponent(stageName)}`)
+    const res = await fetch(`${BASE_URL}/youtube?stage=${encodeURIComponent(stageName)}`)
     youtubeData.value[stageName] = await res.json()
   } catch {
     youtubeData.value[stageName] = { error: '검색 실패' }
